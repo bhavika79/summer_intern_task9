@@ -1,0 +1,209 @@
+
+<script>
+
+function lw1(){
+	var i1=document.getElementById("inp1").value
+	var np=prompt("enter pod name:");
+	var im=prompt("enter image");
+	
+	var xhr=new XMLHttpRequest();
+	xhr.open("GET","http://192.168.43.42/cgi-bin/docker_ui_server.py?inp="+i1+"&np="+np+"&im="+im,true);
+	xhr.send();
+
+
+	xhr.onload=function(){
+		var output=xhr.responseText;
+		document.getElementById("output1").innerHTML=output;
+
+	}
+}
+	function lw2(){
+	var i1=document.getElementById("inp2").value
+	var nd=prompt("enter deployment name:");
+	var im=prompt("enter image");
+	
+	
+	var xhr=new XMLHttpRequest();
+	xhr.open("GET","http://192.168.43.42/cgi-bin/docker_ui_server.py?inp="+i1+"&nd="+nd+"&im="+im,true);
+	xhr.send();
+
+
+	xhr.onload=function(){
+		var output=xhr.responseText;
+		document.getElementById("output1").innerHTML=output;
+
+	}
+}
+	function lw3(){
+	var i1=document.getElementById("inp3").value
+	
+	
+	
+	
+	var xhr=new XMLHttpRequest();
+	xhr.open("GET","http://192.168.43.42/cgi-bin/docker_ui_server.py?inp="+i1,true);
+	xhr.send();
+
+
+	xhr.onload=function(){
+		var output=xhr.responseText;
+		document.getElementById("output1").innerHTML=output;
+
+	}
+}
+	function lw4(){
+	var i1=document.getElementById("inp4").value
+	var nd=prompt("enter deployment:");
+	var r=prompt("enter no of replicas:")
+	
+	
+	var xhr=new XMLHttpRequest();
+	xhr.open("GET","http://192.168.43.42/cgi-bin/docker_ui_server.py?inp="+i1+"&nd="+nd+"&r="+r,true);
+	xhr.send();
+
+
+	xhr.onload=function(){
+		var output=xhr.responseText;
+		document.getElementById("output1").innerHTML=output;
+
+	}
+}
+	function lw5(){
+	var i1=document.getElementById("inp5").value
+	var nd=prompt("enter deployment:");
+	var p=prompt("enter port:")
+	
+	var xhr=new XMLHttpRequest();
+	xhr.open("GET","http://192.168.43.42/cgi-bin/docker_ui_server.py?inp="+i1+"&nd="+nd+"&p="+p,true);
+	xhr.send();
+
+
+	xhr.onload=function(){
+		var output=xhr.responseText;
+		document.getElementById("output1").innerHTML=output;
+
+	}
+}
+	function lw6(){
+	var i1=document.getElementById("inp6").value
+	var nd=prompt("enter deployment name:")
+	
+	
+	var xhr=new XMLHttpRequest();
+	xhr.open("GET","http://192.168.43.42/cgi-bin/docker_ui_server.py?inp="+i1+"&nd="+nd,true);
+	xhr.send();
+
+
+	xhr.onload=function(){
+		var output=xhr.responseText;
+		document.getElementById("output1").innerHTML=output;
+
+	}
+}
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div>
+		<center><h1>kubernetes commands</h1></center>
+	</div>
+	
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Launch a pod</h4>
+					</div>
+					<div class="panel-body">
+						<p>A pod is a collection of containers and its storage inside a node of a Kubernetes cluster. It is possible to create a pod with multiple containers inside it</p><br>
+						<input type="text" id="inp1">   <button onclick="lw1();">click</button>
+						
+					</div>
+				</div>
+			</div>		
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Run Deployment</h4>
+					</div>
+					<div class="panel-body">
+						<p>We can create a Deployment using the kubectl apply , or kubectl create commands. Once created, the Deployment ensures that the desired number of Pods are running and available at all times. The Deployment automatically replaces Pods that fail or are evicted from their nodes.</p>
+						<input type="text" id="inp2">   <button onclick="lw2(); ">click</button>
+						
+					</div>
+				</div>
+			</div>	
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>View pods/deployments</h4>
+					</div>
+					<div class="panel-body"><br>
+						<p>Here,we can view no of deployments that are currently active</p><br><br>
+						<input type="text" id="inp3">   <button onclick="lw3();">click</button>
+						
+					</div>
+				</div>
+			</div>	
+							
+		</div>	
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>scale replica</h4>
+					</div>
+					<div class="panel-body">
+						<p>Kubernetes allows users to horizontally scale the total containers used based on the application requirements, which may change over time. It's easy to change the number via the command line</p><br>
+						<input type="text" id="inp4">   <button onclick="lw4();">click</button>
+						
+					</div>
+				</div>
+			</div>		
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Expose service</h4>
+					</div>
+					<div class="panel-body">
+						<p>Kubernetes ServiceTypes allow you to specify what kind of Service you want. The default is ClusterIP . Type values and their behaviors are: ClusterIP : Exposes the Service on a cluster-internal IP. Choosing this value makes the Service only reachable from within the cluster.</p>
+						<input type="text" id="inp5">   <button onclick="lw5();">click</button>
+						
+					</div>
+				</div>
+			</div>	
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Delete deployment</h4>
+					</div>
+					<div class="panel-body"><br>
+						<p>deleting a deployment is permenantly removing the deployment</p>
+						<br><br>
+						<input type="text" id="inp6">   <button onclick="lw6();">click</button>
+						
+					</div>
+				</div>
+			</div>	
+			</div>
+	</div>
+	<h3>OUTPUT</h3><br>
+	<div id="output1">
+		
+	</div>
+
+
+
+</body>
+</html>
